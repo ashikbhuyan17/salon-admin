@@ -19,20 +19,19 @@ import "./style/global.css";
 // eslint-disable-next-line react-refresh/only-export-components
 // const App = lazy(() => import("./App.jsx"));
 
-import { HashRouter } from "react-router-dom";
 import App from "./App.jsx";
 import theme from "./style/theme.js";
 // import Spinner from "./components/Spinner";
 ReactDOM.createRoot(document.getElementById("root")).render(
 
   <ThemeProvider theme={theme}>
-    <HashRouter>
+    {/* <HashRouter> */}
 
-      {/* <Suspense fallback={<Spinner />}> */}
-      <App />
-      {/* </Suspense> */}
+    {/* <Suspense fallback={<Spinner />}> */}
+    <App />
+    {/* </Suspense> */}
 
-    </HashRouter>
+    {/* </HashRouter> */}
   </ThemeProvider>
 
 );
