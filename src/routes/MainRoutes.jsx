@@ -3,8 +3,8 @@
 // project imports
 
 import AppLayout from "../layouts/app/AppLayout";
+import Dashboard from "../pages/Dashboard";
 import Login from "../pages/auth/Login";
-import Register from "../pages/auth/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 
 
@@ -20,7 +20,7 @@ const MainRoutes = {
             children: [
                 {
                     path: "",  // Remove the leading slash from the path
-                    element: <Register />,
+                    element: <Dashboard />,
                 },
                 {
                     path: "login",  // Remove the leading slash from the path

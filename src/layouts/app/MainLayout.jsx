@@ -314,7 +314,7 @@ const MainLayout = () => {
                     <ul className="space-y-2 font-medium ml-4">
                         <li>
                             <a
-                                href="#"
+                                href="/app"
                                 className="flex items-center p-2  rounded-lg  hover:bg-gray-100 group"
                             >
                                 <Icon icon="material-symbols:dashboard" className="flex-shrink-0 w-5 h-5 transition duration-75 dark:text-gray-400 " />
@@ -556,7 +556,7 @@ const MainLayout = () => {
             <div className="p-4 sm:ml-64" onClick={handleDrawerClose}>
                 <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg  mt-[74px]">
                     <Outlet />
-                    <div className="grid grid-cols-3 gap-4 mb-4">
+                    {/* <div className="grid grid-cols-3 gap-4 mb-4">
                         <div className="flex items-center justify-center h-24 rounded bg-gray-50 ">
                             <p className="text-2xl text-gray-400 ">
                                 <svg
@@ -808,7 +808,7 @@ const MainLayout = () => {
                                 </svg>
                             </p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
