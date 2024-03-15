@@ -3,8 +3,9 @@
 // project imports
 
 import AppLayout from "../layouts/app/AppLayout";
+import Appointment from "../pages/Appointment";
 import Dashboard from "../pages/Dashboard";
-import Login from "../pages/auth/Login";
+import Service from "../pages/Service";
 import PrivateRoute from "./PrivateRoute";
 
 
@@ -23,8 +24,12 @@ const MainRoutes = {
                     element: <Dashboard />,
                 },
                 {
-                    path: "login",  // Remove the leading slash from the path
-                    element: <Login />,
+                    path: "appointment",  // Remove the leading slash from the path
+                    element: <Appointment />,
+                },
+                {
+                    path: "service",  // Remove the leading slash from the path
+                    element: <Service />,
                 },
             ]
         },
