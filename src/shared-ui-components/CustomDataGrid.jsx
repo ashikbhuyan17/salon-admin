@@ -139,7 +139,12 @@ export const CustomDataGrid = ({
     <Box
       sx={{
         width: "100%",
-        "& .css-1ngyb69-MuiDataGrid-root .MuiDataGrid-cell": {},
+        "& .css-1ngyb69-MuiDataGrid-root .MuiDataGrid-cell": {
+          backgroundColor: "red",
+        },
+        '& .css-1iyq7zh-MuiDataGrid-columnHeaders': {
+          backgroundColor: '#F4F6F8',
+        },
         "& .super-app.new": {
           backgroundColor: "rgba(54, 179, 126, 0.16)",
           color: "rgb(27, 128, 106)",
