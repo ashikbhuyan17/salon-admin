@@ -8,6 +8,8 @@ const getStatusColor = (status) => {
             return 'text-[#FF3636] bg-[#ffdcdc] font-semibold';
         case 'Complete':
             return 'text-[#229A16] bg-[#e4f8dd] font-semibold';
+        case 'Paid':
+            return 'text-[#229A16] bg-[#e4f8dd] font-semibold';
         case 'Accept':
             return 'text-[#3D9AE2] bg-[#e0effa] font-semibold';
         case 'Due':
@@ -17,18 +19,18 @@ const getStatusColor = (status) => {
     }
 };
 
-const CustomActions = ({ row }) => {
+const CustomActions = ({ row, showModal }) => {
     // const editButton = handleEdit ? <IconButton onClick={() => handleEdit(row.id)}>Edit</IconButton> : null;
     // const deleteButton = handleDelete ? <IconButton onClick={() => handleDelete(row.id)}>Delete</IconButton> : null;
 
     return (
-        <>
+        <div onClick={showModal}>
             {/* {editButton}
             {deleteButton} */}
             <div className={`border-2 rounded p-1 flex w-[100px] items-center justify-center ${getStatusColor(row.status)}`}>
                 {row.status}
             </div>
-        </>
+        </div>
     );
 };
 

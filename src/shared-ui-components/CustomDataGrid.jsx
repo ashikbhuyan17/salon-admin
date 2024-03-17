@@ -4,8 +4,8 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable prettier/prettier */
 import { Box, TablePagination, styled, useMediaQuery, useTheme } from "@mui/material";
-import { DataGrid } from '@mui/x-data-grid';
-import { GridToolbarContainer } from "@mui/x-data-grid-pro";
+// import { DataGrid } from '@mui/x-data-grid';
+import { DataGridPro, GridToolbarContainer } from "@mui/x-data-grid-pro";
 import React, { useEffect } from "react";
 
 const StyledGridOverlay = styled("div")(({ theme }) => ({
@@ -14,6 +14,9 @@ const StyledGridOverlay = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   height: "100%",
+  '&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
+    outline: 'none',
+  },
   "& .ant-empty-img-1": {
     fill: theme.palette.mode === "light" ? "#aeb8c2" : "#262626",
   },
@@ -94,6 +97,8 @@ export const CustomDataGrid = ({
   hideFooter = true,
   leftPinning = [],
   rightPinning = [],
+  handleCellClick,
+  handleRowClick
 }) => {
   // ===============================|| USE THEME  ||========================================== //
   const theme = useTheme();
@@ -135,10 +140,26 @@ export const CustomDataGrid = ({
     }, 10);
   }, []);
 
+  // const handleRowClick = (params) => {
+  //   console.log(`Movie clicked`, params.row);
+  // };
+  // const handleCellClick = (param, event) => {
+  //   console.log("🚀 ~ handleCellClick ~ param, event:", param.field, event)
+
+  // };
+
   return (
     <Box
       sx={{
         width: "100%",
+        // disable cell selection style
+        "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+          outline: "none !important",
+        },
+        // pointer cursor on ALL rows
+        // '& .MuiDataGrid-row:hover': {
+        //   cursor: 'pointer'
+        // },
         "& .css-1ngyb69-MuiDataGrid-root .MuiDataGrid-cell": {
           backgroundColor: "red",
         },
@@ -195,7 +216,7 @@ export const CustomDataGrid = ({
         },
       }}
     >
-      <DataGrid
+      <DataGridPro
         rows={rows}
         columns={columns}
         columnVisibilityModel={columnVisibilityModel}
@@ -207,37 +228,40 @@ export const CustomDataGrid = ({
         loading={loading}
         experimentalFeatures={{ columnGrouping: true, lazyLoading: true }}
         hideFooterSelectedRowCount
-        disableColumnFilter
-        disableChildrenFiltering
-        disableChildrenSorting
-        disableColumnSelector
-        disableMultipleColumnsFiltering
-        disableMultipleColumnsSorting
+        // disableColumnFilter
+        // disableChildrenFiltering
+        // disableChildrenSorting
+        // disableColumnSelector
+        // disableMultipleColumnsFiltering
+        // disableMultipleColumnsSorting
+        initialState={{ pinnedColumns: { right: ['actions'] } }}
         hideFooter={hideFooter}
-        slots={{
-          toolbar: CustomToolbar,
-          noRowsOverlay: CustomNoRowsOverlay,
-        }}
+        // slots={{
+        //   toolbar: CustomToolbar,
+        //   noRowsOverlay: CustomNoRowsOverlay,
+        // }}
         sx={{
           height: 600,
           " & .MuiDataGrid-virtualScroller": {
             overflow: !rows.length ? "unset" : "auto  ",
           },
         }}
-        slotProps={{
-          toolbar: {
-            showQuickFilter,
-            printOptions: {
-              disableToolbarButton: !(allowExport && print),
-            },
-            csvOptions: {
-              disableToolbarButton: !(allowExport && csv),
-            },
-          },
-        }}
-        initialState={{
-          pinnedColumns: { left: leftPinning, right: rightPinning },
-        }}
+        onRowClick={handleRowClick}
+        onCellClick={handleCellClick}
+      // slotProps={{
+      //   toolbar: {
+      //     showQuickFilter,
+      //     printOptions: {
+      //       disableToolbarButton: !(allowExport && print),
+      //     },
+      //     csvOptions: {
+      //       disableToolbarButton: !(allowExport && csv),
+      //     },
+      //   },
+      // }}
+      // initialState={{
+      //   pinnedColumns: { left: leftPinning, right: rightPinning },
+      // }}
       />
       <TablePagination
         component="div"
